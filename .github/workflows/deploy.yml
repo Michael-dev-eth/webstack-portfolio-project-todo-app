@@ -20,11 +20,16 @@ jobs:
 
             git pull origin main
 
+            # BACKEND
             cd backend
             npm install
             npm run build
-            pm2 restart backend
+            pm2 restart backend || pm2 start dist/index.js --name backend
 
+            # FRONTEND
             cd ../frontend
             npm install
             npm run build
+
+            pm2 delete frontend || true
+            pm2 start "npx serve -s dist -l 5000" --name frontend
