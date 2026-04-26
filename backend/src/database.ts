@@ -8,9 +8,9 @@ import { UserSession } from "./user/user.session.entity";
 
 export const Database = new DataSource({
 	type: 'mysql',
-	username: process.env.DB_USER || 'todo',
-	password: process.env.DB_PASSWORD || 'todo',
-	database: process.env.DB_NAME || 'todo',
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,	
 	host: 'localhost',
 	port: 3306,
 	entities: [ ApiKey, User, UserSession, Todo ],
